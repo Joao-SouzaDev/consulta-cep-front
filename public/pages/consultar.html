@@ -20,6 +20,18 @@
     </header>
     <div class="conteudo-principal">
         <div class="container-card">
+            <div class="opcoes-busca">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                        value="opcao-cep" checked>
+                    <label class="form-check-label" for="inlineRadio1">CEP</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                        value="opcao-endereco">
+                    <label class="form-check-label" for="inlineRadio2">Estado/Cidade/Logradouro</label>
+                </div>
+            </div>
             <form id="cep-form">
                 <label for="cep">Informe o CEP:</label>
                 <input type="text" id="cep" name="cep" maxlength="9" placeholder="00000-000" required>
@@ -32,7 +44,7 @@
             </div>
         </div>
     </div>
-    <script type="module" src="../src/comunicaAPI.js"></script>
+    <script type="module" src="../src/consulta.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

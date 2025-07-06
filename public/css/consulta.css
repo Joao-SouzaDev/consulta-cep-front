@@ -9,6 +9,14 @@
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
+.opcoes-busca {
+    background: white;
+    border-radius: 15px;
+    padding: 1.0rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
 .container-card {
     width: 100%;
     max-width: 500px;
