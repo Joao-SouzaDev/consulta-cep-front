@@ -19,7 +19,7 @@ async function consultaApi() {
                 data.cep,
                 data.logradouro,
                 data.bairro,
-                data.localidade,
+                data.cidade,
                 data.uf
             );
             containerResultado.classList.add('show');
@@ -32,7 +32,7 @@ async function consultaApi() {
 }
 
 
-function montaCardResultado(cep, logradouro, bairro, localidade, uf) {
+function montaCardResultado(cep, logradouro, bairro, cidade, uf) {
     return `
         <h3><i class="fas fa-check-circle" style="color: #28a745;"></i> CEP Encontrado</h3>
         <div class="resultado-item">
@@ -61,7 +61,7 @@ function montaCardResultado(cep, logradouro, bairro, localidade, uf) {
                 <i class="fas fa-city"></i>
                 Cidade:
             </span>
-            <span class="resultado-valor">${localidade || 'Não informado'}</span>
+            <span class="resultado-valor">${cidade || 'Não informado'}</span>
         </div>
         <div class="resultado-item">
             <span class="resultado-label">
