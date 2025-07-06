@@ -1,0 +1,250 @@
+/* Estilos para a página de consulta CEP */
+
+.conteudo-principal {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.container-card {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Card do formulário */
+#cep-form {
+    background: white;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#cep-form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+#cep-form label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#cep-form input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+#cep-form input[type="text"]:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    transform: scale(1.02);
+}
+
+#cep-form input[type="text"]::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+#botao-consultar {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+#botao-consultar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+}
+
+#botao-consultar:active {
+    transform: translateY(0);
+}
+
+#botao-consultar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+#botao-consultar:hover::before {
+    left: 100%;
+}
+
+/* Card de resultado */
+#cep-resultado {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+#cep-resultado.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-resultado {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #28a745;
+}
+
+.card-resultado h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    border-bottom: 2px solid #f8f9fa;
+    padding-bottom: 1rem;
+}
+
+.resultado-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.3s ease;
+}
+
+.resultado-item:last-child {
+    border-bottom: none;
+}
+
+.resultado-item:hover {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin: 0 -0.5rem;
+}
+
+.resultado-label {
+    font-weight: 600;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.resultado-label i {
+    margin-right: 0.5rem;
+    color: #007bff;
+    width: 20px;
+    text-align: center;
+}
+
+.resultado-valor {
+    color: #333;
+    font-weight: 500;
+    text-align: right;
+}
+
+/* Animação de loading */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Mensagem de erro */
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    border-left: 5px solid #dc3545;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .conteudo-principal {
+        padding: 1rem;
+    }
+
+    #cep-form {
+        padding: 2rem 1.5rem;
+    }
+
+    .container-card {
+        max-width: 90%;
+    }
+
+    .resultado-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .resultado-valor {
+        text-align: left;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #cep-form {
+        padding: 1.5rem 1rem;
+    }
+
+    #cep-form label {
+        font-size: 1.1rem;
+    }
+
+    #cep-form input[type="text"] {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+
+    #botao-consultar {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}
