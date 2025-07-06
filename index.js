@@ -1,4 +1,5 @@
 const express = require('express');
+const navegacao = require('./public/src/navegacao.js');
 const path = require('path');
 
 const app = express();
@@ -9,8 +10,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Rota para a página inicial
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'index.html'));
+});
+app.get('/consultar', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'consultar.html'))
 });
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
+
