@@ -78,16 +78,16 @@
     overflow: hidden;
 }
 
-#bota-consultar:hover {
+#botao-consultar:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
 }
 
-#bota-consultar:active {
+#botao-consultar:active {
     transform: translateY(0);
 }
 
-#bota-consultar::before {
+#botao-consultar::before {
     content: '';
     position: absolute;
     top: 0;
@@ -98,7 +98,7 @@
     transition: left 0.5s;
 }
 
-#bota-consultar:hover::before {
+#botao-consultar:hover::before {
     left: 100%;
 }
 
@@ -180,7 +180,6 @@
     border-top: 3px solid #007bff;
     border-radius: 50%;
     animation: spin 1s linear infinite;
-    margin-left: 10px;
 }
 
 @keyframes spin {
@@ -201,7 +200,6 @@
     border-radius: 10px;
     padding: 1rem;
     text-align: center;
-    margin-top: 1rem;
     border-left: 5px solid #dc3545;
 }
 
@@ -245,7 +243,7 @@
         padding: 0.8rem;
     }
 
-    #bota-consultar {
+    #botao-consultar {
         font-size: 1rem;
         padding: 0.8rem;
     }

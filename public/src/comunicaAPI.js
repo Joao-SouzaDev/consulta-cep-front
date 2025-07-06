@@ -8,10 +8,14 @@ const containerResultado = document.getElementById('cep-resultado');
 async function consultaApi() {
     const cepInformado = document.getElementById('cep');
     if (cepInformado.value === "") {
-        campoResultado.innerHTML = 'O Cep precisa ser informado'
+        campoResultado.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-triangle"></i> O CEP precisa ser informado</div>'
         containerResultado.classList.add('show');
         return;
     }
+
+    // Mostra o loading
+    mostrarLoading();
+
     await fetch(`http://localhost:8080/cep/${cepInformado.value}`)
         .then(response => response.json())
         .then(data => {
@@ -26,7 +30,7 @@ async function consultaApi() {
         })
         .catch(error => {
             console.log(error);
-            campoResultado.innerHTML = 'Erro ao consultar CEP';
+            campoResultado.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Erro ao consultar CEP</div>';
             containerResultado.classList.add('show');
         });
 }
@@ -69,6 +73,16 @@ function montaCardResultado(cep, logradouro, bairro, cidade, uf) {
                 Estado:
             </span>
             <span class="resultado-valor">${uf || 'Não informado'}</span>
+        </div>
+    `;
+}
+
+function mostrarLoading() {
+    containerResultado.classList.add('show');
+    campoResultado.innerHTML = `
+        <div style="text-align: center; padding: 2rem;">
+            <div class="loading"></div>
+            <p style="margin-top: 1rem; color: #666;">Consultando CEP...</p>
         </div>
     `;
 }
