@@ -1,17 +1,33 @@
 import { consultaApi } from "./comunicaAPI.js";
+//Controla form conforme opcao selecionada
+const opcaoCepForm = document.getElementById('inlineRadio1');
+const opcaoEnderecoForm = document.getElementById('inlineRadio2');
+opcaoCepForm.addEventListener('change', () => {
+    document.getElementById('cep-form').style.display = 'block';
+    document.getElementById('estado-cidade-form').style.display = 'none';
+    campoResultado.innerHTML = ''; // Limpa o resultado ao mudar a opção
+    containerResultado.classList.remove('show'); // Esconde o container de resultado
+});
+opcaoEnderecoForm.addEventListener('change', () => {
+    document.getElementById('cep-form').style.display = 'none';
+    document.getElementById('estado-cidade-form').style.display = 'block';
+    campoResultado.innerHTML = ''; // Limpa o resultado ao mudar a opção
+    containerResultado.classList.remove('show'); // Esconde o container de resultado
+});
 const botaoConsultar = document.getElementById('botao-consultar')
 botaoConsultar.addEventListener('click', async () => {
     await consultaEndereco();
 })
-
 const campoResultado = document.getElementById('card-resultado');
 const containerResultado = document.getElementById('cep-resultado');
+
 
 // Função para verificar qual opção de busca está selecionada
 function obterOpcaoSelecionada() {
     const opcaoSelecionada = document.querySelector('input[name="inlineRadioOptions"]:checked');
     return opcaoSelecionada ? opcaoSelecionada.value : null;
 }
+
 
 async function consultaEndereco() {
     var opcao = obterOpcaoSelecionada();
@@ -35,7 +51,7 @@ async function consultaEndereco() {
                     resultado.cep,
                     resultado.logradouro,
                     resultado.bairro,
-                    resultado.localidade,
+                    resultado.cidade,
                     resultado.uf
                 );
             } else {

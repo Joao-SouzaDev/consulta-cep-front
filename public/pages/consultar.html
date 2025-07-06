@@ -23,7 +23,7 @@
             <div class="opcoes-busca">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="opcao-cep" checked>
+                        value="opcao-cep">
                     <label class="form-check-label" for="inlineRadio1">CEP</label>
                 </div>
                 <div class="form-check form-check-inline">
@@ -32,9 +32,18 @@
                     <label class="form-check-label" for="inlineRadio2">Estado/Cidade/Logradouro</label>
                 </div>
             </div>
-            <form id="cep-form">
+            <form id="cep-form" class="form-busca">
                 <label for="cep">Informe o CEP:</label>
                 <input type="text" id="cep" name="cep" maxlength="9" placeholder="00000-000" required>
+                <button type="button" id="botao-consultar">Consultar</button>
+            </form>
+            <form id="estado-cidade-form" class="form-busca">
+                <label for=" estado">Estado:</label>
+                <input type="text" id="estado" name="estado" maxlength="2" placeholder="UF" required>
+                <label for="cidade">Cidade:</label>
+                <input type="text" id="cidade" name="cidade" placeholder="Cidade" required>
+                <label for="logradouro">Logradouro:</label>
+                <input type="text" id="logradouro" name="logradouro" placeholder="Logradouro" required>
                 <button type="button" id="botao-consultar">Consultar</button>
             </form>
             <div id="cep-resultado">

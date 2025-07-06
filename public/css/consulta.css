@@ -1,5 +1,4 @@
 /* Estilos para a página de consulta CEP */
-
 .conteudo-principal {
     min-height: calc(100vh - 120px);
     display: flex;
@@ -23,8 +22,10 @@
     margin: 0 auto;
 }
 
-/* Card do formulário */
-#cep-form {
+#estado-cidade-form {
+    display: none;
+    /* Esconde o formulário de Estado/Cidade/Logradouro inicialmente */
+    margin-top: 1rem;
     background: white;
     border-radius: 15px;
     padding: 2.5rem;
@@ -33,12 +34,22 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#cep-form:hover {
+/* Card do formulário */
+.form-busca {
+    background: white;
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-busca:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-#cep-form label {
+.form-busca label {
     display: block;
     font-size: 1.2rem;
     font-weight: 600;
@@ -47,7 +58,7 @@
     text-align: center;
 }
 
-#cep-form input[type="text"] {
+.form-busca input[type="text"] {
     width: 100%;
     padding: 1rem;
     font-size: 1.1rem;
@@ -59,14 +70,14 @@
     letter-spacing: 1px;
 }
 
-#cep-form input[type="text"]:focus {
+.form-busca input[type="text"]:focus {
     outline: none;
     border-color: #007bff;
     box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
     transform: scale(1.02);
 }
 
-#cep-form input[type="text"]::placeholder {
+.form-busca input[type="text"]::placeholder {
     color: #999;
     font-style: italic;
 }
@@ -217,7 +228,7 @@
         padding: 1rem;
     }
 
-    #cep-form {
+    .form-busca {
         padding: 2rem 1.5rem;
     }
 
@@ -238,15 +249,15 @@
 }
 
 @media (max-width: 480px) {
-    #cep-form {
+    .form-busca {
         padding: 1.5rem 1rem;
     }
 
-    #cep-form label {
+    .form-busca label {
         font-size: 1.1rem;
     }
 
-    #cep-form input[type="text"] {
+    .form-busca input[type="text"] {
         font-size: 1rem;
         padding: 0.8rem;
     }
