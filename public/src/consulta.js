@@ -1,4 +1,5 @@
 import { consultaApi } from "./comunicaAPI.js";
+import { salvaListaCepLocalStorage, buscaListaCepLocalStorage } from "./localStorage.js";
 //Controla form conforme opcao selecionada
 const opcaoCepForm = document.getElementById('inlineRadio1');
 const opcaoEnderecoForm = document.getElementById('inlineRadio2');
@@ -30,6 +31,9 @@ function obterOpcaoSelecionada() {
 
 
 async function consultaEndereco() {
+    let listaCep = buscaListaCepLocalStorage();
+    mostrarLoading();
+    // Verifica se CEP ja foi pesquisado
     var opcao = obterOpcaoSelecionada();
     if (opcao === null) {
         campoResultado.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Por favor, selecione uma opção de busca.</div>';
@@ -38,15 +42,32 @@ async function consultaEndereco() {
     }
     if (opcao === 'opcao-cep') {
         const cepInformado = document.getElementById('cep');
-        if (cepInformado.value === "") {
+        if (cepInformado.value === "" || cepInformado.value.length < 9) {
             campoResultado.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Por favor, informe um CEP válido.</div>';
             containerResultado.classList.add('show');
             return;
         }
-        mostrarLoading();
+        // Verifica se o CEP já foi pesquisado
+        let cepExistente = listaCep.find(item => item.cep === cepInformado.value);
+        if (cepExistente) {
+            campoResultado.innerHTML = montaCardResultado(
+                cepExistente.cep,
+                cepExistente.logradouro,
+                cepExistente.bairro,
+                cepExistente.cidade,
+                cepExistente.uf
+            );
+            containerResultado.classList.add('show');
+            return;
+        }
         try {
             let resultado = await consultaApi(cepInformado.value, null, null, null)
-            if (resultado) {
+            if (resultado.cep) {
+                // Verifica se o CEP já existe na lista antes de adicionar
+                let cepDuplicado = listaCep.find(item => item.cep === resultado.cep);
+                if (!cepDuplicado) {
+                    listaCep.push(resultado);
+                }
                 campoResultado.innerHTML = montaCardResultado(
                     resultado.cep,
                     resultado.logradouro,
@@ -57,6 +78,7 @@ async function consultaEndereco() {
             } else {
                 campoResultado.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-triangle"></i> CEP não encontrado ou inválido.</div>';
             }
+            salvaListaCepLocalStorage(listaCep);
         } catch (error) {
             console.error('Erro ao consultar CEP:', error);
             campoResultado.innerHTML = '<div class="error-message"><i class="fas fa-exclamation-triangle"></i> Ocorreu um erro ao consultar o CEP. Por favor, tente novamente mais tarde.</div>';
