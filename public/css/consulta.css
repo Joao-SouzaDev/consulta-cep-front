@@ -82,7 +82,7 @@
     font-style: italic;
 }
 
-#botao-consultar {
+.botao-consultar {
     width: 100%;
     padding: 1rem;
     background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
@@ -97,16 +97,16 @@
     overflow: hidden;
 }
 
-#botao-consultar:hover {
+.botao-consultar:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
 }
 
-#botao-consultar:active {
+.botao-consultar:active {
     transform: translateY(0);
 }
 
-#botao-consultar::before {
+.botao-consultar::before {
     content: '';
     position: absolute;
     top: 0;
@@ -117,7 +117,7 @@
     transition: left 0.5s;
 }
 
-#botao-consultar:hover::before {
+.botao-consultar:hover::before {
     left: 100%;
 }
 
@@ -262,7 +262,7 @@
         padding: 0.8rem;
     }
 
-    #botao-consultar {
+    .botao-consultar {
         font-size: 1rem;
         padding: 0.8rem;
     }
