@@ -1,6 +1,6 @@
 # 📍 Consulta CEP - Frontend
 
-Uma aplicação web moderna para consulta de CEPs com interface elegante e responsiva.
+Uma aplicação web moderna para consulta de CEPs.
 
 ## 🏗️ Estrutura do Projeto
 
@@ -31,13 +31,27 @@ consulta-cep-front/
         └── navegacao.js          # Sistema de navegação
 ```
 
-## 🚀 Setup e Instalação
+## � API Backend
+
+Este frontend requer a API ConsultaCepAPI para funcionar corretamente.
+
+**📍 Repositório da API**: [ConsultaCepAPI](https://github.com/Joao-SouzaDev/ConsultaCepAPI)
+
+A API fornece endpoints para:
+- Consulta de CEP por número
+- Consulta de CEP por endereço (estado, cidade, logradouro)
+- Integração com serviços externos de CEP
+
+Para mais informações sobre instalação e configuração da API, consulte o repositório oficial.
+
+## �🚀 Setup e Instalação
 
 ### Pré-requisitos
 
 - **Node.js** (versão 14 ou superior)
 - **npm** (vem com o Node.js)
 - **API Backend** rodando (padrão: `http://localhost:8080`)
+  - 📌 **API Repository**: [ConsultaCepAPI](https://github.com/Joao-SouzaDev/ConsultaCepAPI) 
 
 ### 1. Instalação das Dependências
 
@@ -136,15 +150,6 @@ const ceps = buscaListaCepLocalStorage();
 2. **`consulta.css`**: Estilos específicos da página de consulta
 3. **`listagem.css`**: Estilos específicos da listagem de CEPs
 
-### Características do Design
-
-- ✨ **Design responsivo** para mobile, tablet e desktop
-- 🎭 **Animações CSS** suaves e modernas
-- 🎨 **Gradientes** e sombras elegantes
-- 📱 **Mobile-first** approach
-- ♿ **Acessibilidade** com estados de foco adequados
-- 🔄 **Animações de carregamento** e transições
-
 ### Framework e Bibliotecas
 
 - **Bootstrap 5.3.0**: Sistema de grid e componentes
@@ -212,12 +217,6 @@ GET ${ENDERECO_API}cep?estado={estado}&cidade={cidade}&logradouro={logradouro}
    - A aplicação roda na porta 3001 por padrão
    - Altere a porta no `index.js` se necessário
 
-### Logs e Debug
-
-- **Console do navegador**: Mostra erros de JavaScript e requisições
-- **Terminal do servidor**: Mostra logs do Express e erros de servidor
-- **Network tab**: Monitore as requisições HTTP no DevTools
-
 ## 🔄 Scripts Disponíveis
 
 ```bash
@@ -227,10 +226,6 @@ npm start
 # Instalar dependências
 npm install
 
-# Executar testes (quando implementados)
-npm test
-```
-
 ## 📝 Notas de Desenvolvimento
 
 - O projeto utiliza **ES6 modules** no frontend
@@ -238,7 +233,3 @@ npm test
 - **Dotenv** carrega variáveis de ambiente
 - **Nodemon** para auto-reload em desenvolvimento
 - Sistema de **configuração dinâmica** para diferentes ambientes
-
----
-
-**Desenvolvido com ❤️ para consultas de CEP eficientes e elegantes**
