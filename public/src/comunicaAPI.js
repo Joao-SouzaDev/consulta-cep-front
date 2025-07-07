@@ -1,7 +1,11 @@
 
+import { getApiUrl } from './config.js';
+
 export async function consultaApi(cep, estado, cidade, logradouro) {
+    const apiUrl = await getApiUrl();
+
     if (cep) {
-        return await fetch(`http://localhost:8080/cep/${cep}`)
+        return await fetch(`${apiUrl}cep/${cep}`)
             .then(response => response.json())
             .then(data => {
                 return data;
@@ -12,7 +16,7 @@ export async function consultaApi(cep, estado, cidade, logradouro) {
             });
     }
     else if (estado && cidade && logradouro) {
-        return await fetch(`http://localhost:8080/cep?estado=${estado}&cidade=${cidade}&logradouro=${logradouro}`)
+        return await fetch(`${apiUrl}cep?estado=${estado}&cidade=${cidade}&logradouro=${logradouro}`)
             .then(response => response.json())
             .then(data => {
                 return data;
@@ -25,5 +29,4 @@ export async function consultaApi(cep, estado, cidade, logradouro) {
     else {
         return null;
     }
-
 }
